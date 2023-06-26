@@ -4,7 +4,7 @@ const baseUrl = 'https://overfast-api.tekrop.fr/';
 
 const getPlayer = (playerName) => {
   const request = axios.get(
-    `${baseUrl}players?name=${playerName}order_by=name%3Aasc&offset=0&limit=20`
+    `${baseUrl}players?name=${playerName}&order_by=name%3Aasc&offset=0&limit=20`
   );
   return request.then((response) => console.log(response.data));
 };
