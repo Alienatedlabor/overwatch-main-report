@@ -16,12 +16,12 @@ function App() {
   };
 
   return (
-    <div className="flex place-content-center">
+    <div className="flex justify-center items-center flex-col">
       <form onSubmit={handleSubmit}>
         <div className="flex gap-4 my-2 py-1">
           <h1 className="text-lg">Search for a player: </h1>
           <input
-            className="border rounded-md ring-1 ring-yellow-600 border-orange-400"
+            className="border rounded-md ring-1 ring-yellow-600 border-orange-400 px-1"
             value={searched}
             onChange={(e) => setSearched(e.target.value)}
             type="text"
@@ -37,7 +37,9 @@ function App() {
       <ul>
         {playerList.map((player) => (
           <li key={player.name}>
-            <button>{player.name}</button>
+            <button className="bg-orange-500 hover:bg-yellow-600 text-white font-bold py-1 px-4">
+              {player.name}
+            </button>
           </li>
         ))}
       </ul>
@@ -46,5 +48,3 @@ function App() {
 }
 
 export default App;
-
-//TODO: what the fuck is wrong with my map function
