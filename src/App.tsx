@@ -16,24 +16,32 @@ function App() {
   };
 
   return (
-    <>
+    <div className="flex place-content-center">
       <form onSubmit={handleSubmit}>
-        <div>
-          <h1>Search for a player: </h1>
+        <div className="flex gap-4 my-2 py-1">
+          <h1 className="text-lg">Search for a player: </h1>
           <input
+            className="border rounded-md ring-1 ring-yellow-600 border-orange-400"
             value={searched}
             onChange={(e) => setSearched(e.target.value)}
             type="text"
           />
-          <button type="submit">Search</button>
+          <button
+            className="bg-orange-500 hover:bg-yellow-600 text-white font-bold py-1 px-4 border-b-4 border-orange-700 hover:border-orange-500 rounded active:opacity-50 active:border-b-2"
+            type="submit"
+          >
+            Search
+          </button>
         </div>
       </form>
       <ul>
         {playerList.map((player) => (
-          <li key={player.name}>{player.name}</li>
+          <li key={player.name}>
+            <button>{player.name}</button>
+          </li>
         ))}
       </ul>
-    </>
+    </div>
   );
 }
 
