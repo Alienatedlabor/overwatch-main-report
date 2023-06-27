@@ -10,7 +10,7 @@ function App() {
     e.preventDefault();
     overFastService
       .getPlayer(searched)
-      .then((responseData) => setPlayerList(responseData));
+      .then((responseData) => setPlayerList(responseData.results));
 
     console.log(playerList);
   };
@@ -30,7 +30,7 @@ function App() {
       </form>
       <ul>
         {playerList.map((player) => (
-          <li>{player.name}</li>
+          <li key={player.name}>{player.name}</li>
         ))}
       </ul>
     </>
@@ -38,3 +38,5 @@ function App() {
 }
 
 export default App;
+
+//TODO: what the fuck is wrong with my map function
