@@ -5,6 +5,7 @@ import './App.css';
 function App() {
   const [searched, setSearched] = useState('');
   const [playerList, setPlayerList] = useState([]);
+  const [playerInfo, setPlayerInfo] = useState({});
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -13,6 +14,13 @@ function App() {
       .then((responseData) => setPlayerList(responseData.results));
 
     console.log(playerList);
+  };
+
+  const getInfo = (player_id: string) => {
+    overFastService
+      .getPlayerInfo(player_id)
+      .then((responseData) => setPlayerInfo(responseData));
+    console.log(playerInfo);
   };
 
   return (
@@ -37,7 +45,10 @@ function App() {
       <ul>
         {playerList.map((player) => (
           <li key={player.name}>
-            <button className="bg-orange-500 hover:bg-yellow-600 text-white font-bold py-1 px-4">
+            <button
+              onClick={getInfo(player.player_id)}
+              className="bg-orange-500 hover:bg-yellow-600 text-white font-bold py-1 px-4"
+            >
               {player.name}
             </button>
           </li>

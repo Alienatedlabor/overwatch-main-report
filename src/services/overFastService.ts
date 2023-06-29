@@ -9,4 +9,9 @@ const getPlayer = (playerName: string) => {
   return request.then((response) => response.data);
 };
 
-export default { getPlayer };
+const getPlayerInfo = (playerId: string) => {
+  const request = axios.get(`${baseUrl}players?name=${playerId}/stats/summary`);
+  return request.then((response) => console.log(response.data));
+};
+
+export default { getPlayer, getPlayerInfo };
