@@ -7,6 +7,17 @@ function App() {
   const [playerList, setPlayerList] = useState([]);
   const [playerInfo, setPlayerInfo] = useState({});
 
+  const ResultButton = ({ player }) => {
+    return (
+      <button
+        onClick={() => getInfo(player.player_id)}
+        className="bg-orange-500 hover:bg-yellow-600 text-white font-bold py-1 px-4"
+      >
+        {player.name}
+      </button>
+    );
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     overFastService
@@ -45,12 +56,7 @@ function App() {
       <ul>
         {playerList.map((player) => (
           <li key={player.name}>
-            <button
-              onClick={getInfo(player.player_id)}
-              className="bg-orange-500 hover:bg-yellow-600 text-white font-bold py-1 px-4"
-            >
-              {player.name}
-            </button>
+            <ResultButton player={player} />
           </li>
         ))}
       </ul>
