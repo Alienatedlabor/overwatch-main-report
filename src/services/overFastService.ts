@@ -10,8 +10,8 @@ const getPlayer = (playerName: string) => {
 };
 
 const getPlayerInfo = (playerId: string) => {
-  const request = axios.get(`${baseUrl}players?name=${playerId}/stats/summary`);
-  return request.then((response) => console.log(response.data));
+  const request = axios.get(`${baseUrl}players/${playerId}/stats/summary`);
+  return request.then((response) => response.data);
 };
 
 export default { getPlayer, getPlayerInfo };
