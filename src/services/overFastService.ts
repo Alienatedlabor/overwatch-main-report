@@ -7,11 +7,15 @@ const getPlayers = async (playerName: string): Promise<Player[]> => {
   const response = await axios.get(
     `${baseUrl}players?name=${playerName}&order_by=name%3Aasc&offset=0&limit=20`
   );
-  return response.data.results.map((player: any) => ({
-    name: player.name,
-    id: player.player_id,
-    isPrivate: player.privacy === 'private',
-  }));
+
+  // first filters out private profiles, then returns a player object
+  return response.data.results
+    .filter((player: any) => player.privacy === 'public')
+    .map((player: any) => ({
+      name: player.name,
+      id: player.player_id,
+      isPrivate: player.privacy === 'private',
+    }));
 };
 
 const getPlayerInfo = async (playerId: string): Promise<PlayerInfo> => {

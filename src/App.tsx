@@ -27,25 +27,15 @@ function App() {
   return (
     <div className="flex justify-center items-center flex-col">
       <form onSubmit={handleSubmit}>
-        <div className="flex gap-4 my-2 py-1">
+        <div className="flex  items-center gap-4 my-2 py-1">
           <h1 className="text-lg">Search for a player: </h1>
-          <div className="flex flex-col">
+          <div className="flex flex-col ">
             <input
               className="border rounded-md ring-1 ring-yellow-600 border-orange-400 px-1"
               value={searched}
               onChange={(e) => setSearched(e.target.value)}
               type="text"
             />
-            <ul>
-              {playerList.map((player) => (
-                <li key={player.name}>
-                  <Button
-                    onClick={() => getInfo(player.id)}
-                    label={player.name}
-                  />
-                </li>
-              ))}
-            </ul>
           </div>
 
           <button
@@ -56,6 +46,13 @@ function App() {
           </button>
         </div>
       </form>
+      <ul>
+        {playerList.map((player) => (
+          <li key={player.name}>
+            <Button onClick={() => getInfo(player.id)} label={player.name} />
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
