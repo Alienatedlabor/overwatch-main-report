@@ -12,7 +12,7 @@ const Button = ({ label, onClick, isDisabled, isLoading }: ButtonProps) => {
       className="bg-orange-500 hover:bg-yellow-600 text-white font-bold py-1 px-4"
       disabled={isDisabled || isLoading}
     >
-      {isLoading ? 'Loading...' : label}
+      {isLoading ? 'Loading...' : `${label} >`}
     </button>
   );
 };
