@@ -3,6 +3,7 @@ import overFastService from './services/overFastService';
 import './App.css';
 import { PlayerInfo, Player } from './types/player';
 import Button from './components/Button';
+import DisplayPlayerInfo from './components/DisplayPlayerInfo';
 
 function App() {
   const [searched, setSearched] = useState('');
@@ -53,6 +54,8 @@ function App() {
           </li>
         ))}
       </ul>
+
+      <DisplayPlayerInfo info={playerInfo || ''} />
     </div>
   );
 }
