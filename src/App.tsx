@@ -9,18 +9,20 @@ function App() {
   const [searched, setSearched] = useState('');
   const [playerList, setPlayerList] = useState<Player[]>([]);
   const [playerInfo, setPlayerInfo] = useState<PlayerInfo | null>(null);
+  const [showPlayerInfo, setShowPlayerInfo] = useState<boolean>(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const playerList = await overFastService.getPlayers(searched);
     setPlayerList(playerList);
-
+    setShowPlayerInfo(false);
     console.log(playerList);
   };
 
   const getInfo = async (player_id: string) => {
     const playerInfo = await overFastService.getPlayerInfo(player_id);
     setPlayerInfo(playerInfo);
+    setShowPlayerInfo(true);
   };
 
   useEffect(() => console.log(playerInfo), [playerInfo]);
@@ -48,14 +50,19 @@ function App() {
         </div>
       </form>
       <ul>
-        {playerList.map((player) => (
-          <li key={player.name}>
-            <Button onClick={() => getInfo(player.id)} label={player.name} />
-          </li>
-        ))}
+        {searched &&
+          playerList.map((player) => (
+            <li key={player.name}>
+              <Button onClick={() => getInfo(player.id)} label={player.name} />
+            </li>
+          ))}
       </ul>
 
-      <DisplayPlayerInfo info={playerInfo || ''} />
+      {showPlayerInfo && searched ? (
+        <DisplayPlayerInfo info={playerInfo || ''} />
+      ) : (
+        <></>
+      )}
     </div>
   );
 }
