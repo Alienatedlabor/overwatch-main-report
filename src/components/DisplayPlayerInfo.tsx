@@ -1,3 +1,5 @@
+import MainQuip from './MainQuip';
+
 const DisplayPlayerInfo = ({ info }: any) => {
   return (
     <div className="px-16 py-8 rounded-md shadow-md my-4">
@@ -5,6 +7,7 @@ const DisplayPlayerInfo = ({ info }: any) => {
       <p>Total time played: {info.timePlayed}</p>
       <p>Winrate: {info.winrate}%</p>
       <p className="font-bold">This player's main is: {info.mostPlayedHero}</p>
+      <MainQuip mostPlayedHero={info.mostPlayedHero} />
     </div>
   );
 };
