@@ -1,6 +1,11 @@
+import { PlayerInfo } from '../types/player';
 import MainQuip from './MainQuip';
 
-const DisplayPlayerInfo = ({ info }: any) => {
+interface DisplayPlayerInfoProps {
+  info: PlayerInfo;
+}
+
+const DisplayPlayerInfo = ({ info }: DisplayPlayerInfoProps) => {
   return (
     <div className="px-16 py-8 rounded-md shadow-md my-4">
       <p>Total Games played: {info.gamesPlayed}</p>

@@ -1,6 +1,9 @@
-import React from 'react';
+import { Hero } from '../types/player';
+interface MainQuipProps {
+  mostPlayedHero: Hero;
+}
 
-const MainQuip = ({ mostPlayedHero }: any) => {
+const MainQuip = ({ mostPlayedHero }: MainQuipProps) => {
   switch (mostPlayedHero) {
     case 'ana':
       return (
@@ -84,6 +87,8 @@ const MainQuip = ({ mostPlayedHero }: any) => {
       return <p> Jack of all trades, master of none.</p>;
     case 'genji':
       return <p> I need healing</p>;
+    case 'junker-queen':
+      return <p></p>;
     default:
       return null;
   }
