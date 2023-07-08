@@ -31,13 +31,14 @@ function App() {
     <div className="flex justify-center items-center flex-col">
       <form onSubmit={handleSubmit}>
         <div className="flex  items-center gap-4 my-2 py-1">
-          <h1 className="text-lg">Search for a player: </h1>
+          <h1 className="text-lg">Who's their Overwatch Main? </h1>
           <div className="flex flex-col ">
             <input
               className="border rounded-md ring-1 ring-yellow-600 border-orange-400 px-1"
               value={searched}
               onChange={(e) => setSearched(e.target.value)}
               type="text"
+              placeholder="Search for a player"
             />
           </div>
 

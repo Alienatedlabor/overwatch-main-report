@@ -7,7 +7,7 @@ interface DisplayPlayerInfoProps {
 
 const DisplayPlayerInfo = ({ info }: DisplayPlayerInfoProps) => {
   return (
-    <div className="px-16 py-8 rounded-md shadow-md my-4">
+    <div className="px-16 py-8 rounded-md shadow-md my-16">
       <p>Total Games played: {info.gamesPlayed}</p>
       <p>Total time played: {info.timePlayed}</p>
       <p>Winrate: {info.winrate}%</p>
