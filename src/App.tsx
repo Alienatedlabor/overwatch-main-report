@@ -60,7 +60,7 @@ function App() {
       </ul>
 
       {showPlayerInfo && searched ? (
-        <DisplayPlayerInfo info={playerInfo || ''} />
+        <DisplayPlayerInfo info={playerInfo || null} />
       ) : (
         <></>
       )}
