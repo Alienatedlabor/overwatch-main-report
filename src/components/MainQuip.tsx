@@ -1,6 +1,6 @@
 import { Hero } from '../types/player';
 interface MainQuipProps {
-  mostPlayedHero: Hero | undefined;
+  mostPlayedHero: Hero;
 }
 
 const MainQuip = ({ mostPlayedHero }: MainQuipProps) => {
