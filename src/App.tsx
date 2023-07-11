@@ -4,6 +4,7 @@ import './App.css';
 import { PlayerInfo, Player } from './types/player';
 import Button from './components/Button';
 import DisplayPlayerInfo from './components/DisplayPlayerInfo';
+import toast, { Toaster } from 'react-hot-toast';
 
 function App() {
   const [searched, setSearched] = useState('');
@@ -16,16 +17,26 @@ function App() {
     const playerList = await overFastService.getPlayers(searched);
     setPlayerList(playerList);
     setShowPlayerInfo(false);
-    console.log(playerList);
+    setPlayerInfo(null);
   };
 
   const getInfo = async (player_id: string) => {
-    const playerInfo = await overFastService.getPlayerInfo(player_id);
-    setPlayerInfo(playerInfo);
-    setShowPlayerInfo(true);
+    try {
+      const playerInfo = await overFastService.getPlayerInfo(player_id);
+      setPlayerInfo(playerInfo);
+      setShowPlayerInfo(true);
+    } catch (error) {
+      toast.error('This account may have been deleted, something went wrong!', {
+        duration: 4000,
+      });
+    }
   };
 
-  useEffect(() => console.log(playerInfo), [playerInfo]);
+  useEffect(() => {
+    if (!searched) {
+      setShowPlayerInfo(false);
+    }
+  }, [searched]);
 
   return (
     <div className="flex justify-center items-center flex-col">
@@ -51,19 +62,16 @@ function App() {
         </div>
       </form>
       <ul>
-        {searched &&
-          playerList.map((player) => (
-            <li key={player.name}>
-              <Button onClick={() => getInfo(player.id)} label={player.name} />
-            </li>
-          ))}
+        {playerList.map((player) => (
+          <li key={player.name}>
+            <Button onClick={() => getInfo(player.id)} label={player.name} />
+          </li>
+        ))}
       </ul>
 
-      {showPlayerInfo && searched ? (
-        <DisplayPlayerInfo info={playerInfo || ''} />
-      ) : (
-        <></>
-      )}
+      {showPlayerInfo && playerInfo && <DisplayPlayerInfo info={playerInfo} />}
+
+      <Toaster />
     </div>
   );
 }
