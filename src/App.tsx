@@ -41,7 +41,7 @@ function App() {
   return (
     <div className="flex justify-center items-center flex-col">
       <form onSubmit={handleSubmit}>
-        <div className="flex  items-center gap-4 my-2 py-1">
+        <div className="flex flex-col lg:flex-row  items-center gap-4 my-2 py-1">
           <h1 className="text-lg">Who's their Overwatch Main? </h1>
           <div className="flex flex-col ">
             <input
